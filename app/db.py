@@ -1,6 +1,7 @@
 import sqlite3
-
+<<<<<<< HEAD
 from flask import current_app
+
 
 
 def get_connection() -> sqlite3.Connection:
@@ -9,12 +10,14 @@ def get_connection() -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     return conn
 
-
+<<<<<<< HEAD
 def init_db(db_path: str) -> None:
     conn = sqlite3.connect(db_path)
     try:
-        conn.execute(
-            """
+        conn.execute("""
+=======
+
+
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
@@ -23,10 +26,14 @@ def init_db(db_path: str) -> None:
                 password_hash TEXT NOT NULL,
                 role TEXT NOT NULL CHECK(role IN ('Admin', 'Manager', 'User')),
                 two_fa_secret TEXT NOT NULL,
+<<<<<<< HEAD
+                last_2fa_at INTEGER DEFAULT 0,
                 created_at TEXT DEFAULT CURRENT_TIMESTAMP
             )
-            """
-        )
+        """)
         conn.commit()
     finally:
         conn.close()
+
+
+
